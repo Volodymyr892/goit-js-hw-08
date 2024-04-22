@@ -64,5 +64,40 @@ const images = [
     },
     ];
 
+    const markup = images.reduce((html, image)=>{
+        return(html +=`
+            <li class="gallery-item">
+            <a class="gallery-link" href="#" data-source="${image.original}">
+                  <img
+                    class="gallery-image"
+                    src= "${image.preview}"
+                    data-source="${image.original}"
+                    alt= "${image.description}"
+                  />
+                </a>
+             </li>
+        `);
+    }, '');
 
-    const gallery = document.querySelector('.gallery')
+    const galleryEL = document.querySelector('.gallery')
+    galleryEL.insertAdjacentHTML('beforeend', markup)
+
+
+
+
+
+
+
+    galleryEL.addEventListener("click", selectColor);
+   function selectColor(event){
+    event.preventDefault();
+
+    const target = event.target;
+    if (target.classList.contains('gallery-link')) {
+        const largeImageSrc = target.getAttribute('data-source');
+        
+        const instance = basicLightbox.create(`
+        <img src= "${largeImageSrc}" alt="${target.getAttribute('alt')}">`);
+        instance.show()
+    }     
+};
