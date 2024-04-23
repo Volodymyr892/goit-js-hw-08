@@ -93,7 +93,7 @@ const images = [
     event.preventDefault();
 
     const target = event.target;
-    if (target.classList.contains('gallery-link')) {
+    if (target.classList.contains('gallery-image')) {
         const largeImageSrc = target.getAttribute('data-source');
         
         const instance = basicLightbox.create(`
