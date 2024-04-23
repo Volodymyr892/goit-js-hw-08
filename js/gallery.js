@@ -82,12 +82,6 @@ const images = [
     const galleryEL = document.querySelector('.gallery')
     galleryEL.insertAdjacentHTML('beforeend', markup)
 
-
-
-
-
-
-
     galleryEL.addEventListener("click", selectColor);
    function selectColor(event){
     event.preventDefault();
